@@ -1,0 +1,67 @@
+Library App (proses peminjaman dan pengembalian buku)
+
+->aplikasi peminjaman dan pengembalian
+
+READ AND WRITE "nama_user" with String
+READ AND WRITE "status_user" with String
+READ AND WRITE "id_buku" with String
+READ AND WRITE "status_buku" with String
+READ AND WRITE "data_buku" with List
+READ AND WRITE "waktu_peminjaman" with Time_Stamp
+
+====> Registrasi <====
+Daftar User
+
+PengunjungApps ingin menjadi User
+IF calon user sudah mendaftar
+        IF sudah mengisi formulir pendaftaran
+           WRITE data anggota di data User
+   ELSE
+           Isi formulir
+ELSE
+     Serahkan data user
+
+===> Transaksi Peminjaman <===
+
+     User mencari buku
+     READ id buku di data BUKU
+     IF User menemukan buku yang diinginkan
+            IF Buku yang ingin dipinjam tersedia
+               READ No  di data User
+               IF Status Peminjam adalah User
+                   READ Status peminjaman di Data User
+                   IF Tidak ada tanggungan peminjaman
+                     IF sudah dilakukan transaksi peminjaman
+                          WRITE PEMINJAMAN
+                          Serahkan Buku dan bukti Peminjaman
+                     ELSE
+                          Transaksi Peminjaman   
+                   ELSE
+                     Tidak diperkenankan Meminjam
+               ELSE
+                   Tidak bisa meminjam buku
+            ELSE
+               Tidak jadi meminjam buku tersebut
+     ELSE
+            Buku tidak tersedia
+  
+   
+  ===> Transkasi Pengembalian <===
+  
+     IF User ingin Mengembalikan
+             IF no transaksi dan buku sudah diserahkan
+                READ data transaksi di data PEMINJAM
+                WRITE status Pinjam di Data User
+                IF tanggal pengembalian melewati batas
+                    Hitung denda
+                    IF sudah bayar denda
+                       WRITE status Peminjaman di data BUKU
+                       Serahkan bukti pengembalian
+                    ELSE
+                       Bayar denda
+                ELSE
+                    Serahkan bukti pengembalian
+             ELSE
+                Serahkan Buku dan no transaksi   
+     ELSE
+             User hanya membaca
